@@ -6,14 +6,17 @@ import TypingBox from './Components/TypingBox.js'
 function App() {
   const [toDo, settoDo] = useState('')
 
+  let data = []
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    settoDo(toDo)
+    data.push(e)
+    console.log('LOL IT WORKS')
   }
 
   return (
     <div>
-      <TypingBox handleSubmit={handleSubmit} />
+      <TypingBox handleSubmit={handleSubmit} data={data} />
       <ToDo />
     </div>
   )

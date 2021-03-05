@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react'
 
-export default function TypingBox() {
+export default function TypingBox(props) {
   const [item, setItem] = useState('')
 
   console.log(item)
+  console.log(props.data)
 
   const handleChange = ({ target }) => setItem(target.value)
 
   return (
     <div>
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={props.handleSubmit}>
         <label>
           To-do:
           <input value={item} type="text" onChange={handleChange} />
