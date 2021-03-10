@@ -1,23 +1,27 @@
 import './App.css'
 import React, { useState, useEffect } from 'react'
-import ToDo from './Components/ToDo.js'
-import TypingBox from './Components/TypingBox.js'
+import Header from './Components/Header.js'
+import ToDoList from './Components/ToDoList.js'
+import TodoForm from './Components/TodoForm.js'
 
 function App() {
   const [toDo, settoDo] = useState('')
 
   let data = []
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    data.push(e)
-    console.log('LOL IT WORKS')
-  }
+  // const handleSubmit = (e) => {
+  //   e.preventDefault()
+  //   settoDo(e)
+  //   data.push(e)
+  //   console.log('LOL IT WORKS')
+  //   console.log('data', data, 'toDo', toDo)
+  // }
 
   return (
     <div>
-      <TypingBox handleSubmit={handleSubmit} data={data} />
-      <ToDo />
+      <Header />
+      <TodoForm />
+      <ToDoList />
     </div>
   )
 }
