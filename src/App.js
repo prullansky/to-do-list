@@ -5,23 +5,30 @@ import ToDoList from './Components/ToDoList.js'
 import TodoForm from './Components/TodoForm.js'
 
 function App() {
-  const [toDo, settoDo] = useState('')
+  const [item, setItem] = useState('')
 
-  let data = []
+  const [list, setList] = useState([])
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   settoDo(e)
-  //   data.push(e)
-  //   console.log('LOL IT WORKS')
-  //   console.log('data', data, 'toDo', toDo)
-  // }
+  const handleChange = (e) => {
+    setItem(e.currentTarget.value)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setList((prevlist) => [...prevlist, item])
+    setItem('')
+    console.log(list)
+  }
 
   return (
     <div>
       <Header />
-      <TodoForm />
-      <ToDoList />
+      <TodoForm
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        item={item}
+      />
+      <ToDoList list={list} />
     </div>
   )
 }
