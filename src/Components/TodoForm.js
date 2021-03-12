@@ -1,11 +1,9 @@
-import React, { useState } from 'react'
-
 export default function TodoForm(props) {
   return (
     <div>
       <form onSubmit={props.handleSubmit}>
         <label>
-          To-do:
+          {/* To-do: */}
           <input
             value={props.item}
             type="text"

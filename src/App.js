@@ -1,5 +1,5 @@
 import './App.css'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Header from './Components/Header.js'
 import ToDoList from './Components/ToDoList.js'
 import TodoForm from './Components/TodoForm.js'
@@ -20,6 +20,14 @@ function App() {
     console.log(list)
   }
 
+  const handleClick = (e) => {
+    console.log('It is clicking')
+  }
+
+  const handleDelete = (e) => {
+    console.log('It is deleting')
+  }
+
   return (
     <div>
       <Header />
@@ -28,7 +36,11 @@ function App() {
         handleSubmit={handleSubmit}
         item={item}
       />
-      <ToDoList list={list} />
+      <ToDoList
+        list={list}
+        handleClick={handleClick}
+        handleDelete={handleDelete}
+      />
     </div>
   )
 }
