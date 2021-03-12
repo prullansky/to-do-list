@@ -1,30 +1,22 @@
 import React, { useState, useEffect } from 'react'
 
 export default function TypingBox(props) {
-  const [userInput, setUserInput] = useState('')
+  const [item, setItem] = useState('')
 
-  const data = []
+  const [list, setList] = useState([])
 
-  //   const handleChange = ({ target }) => {
-  //   const { name, value } = target;
-  //   setFormState((prev) => ({
-  //     ...prev,
-  //     [name]: value
-  //   }));
-  // };
-
-  console.log(userInput)
+  console.log(item)
   console.log(props.data)
 
   const handleChange = (e) => {
-    setUserInput(e.currentTarget.value)
+    setItem(e.currentTarget.value)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    data.push(userInput)
-    setUserInput('')
-    console.log('data', data, 'item', userInput)
+    setList((prevlist) => [...prevlist, item])
+    setItem('')
+    console.log(list)
   }
 
   return (
@@ -33,7 +25,7 @@ export default function TypingBox(props) {
         <label>
           To-do:
           <input
-            value={userInput}
+            value={item}
             type="text"
             onChange={handleChange}
             placeholder="Enter task..."
@@ -41,6 +33,17 @@ export default function TypingBox(props) {
         </label>
         <input type="submit" value="Submit" />
       </form>
+      <div>
+        {list.map((element, elementIndexInArray) => {
+          return (
+            <div>
+              <ul>
+                <li>{element}</li>
+              </ul>
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }
